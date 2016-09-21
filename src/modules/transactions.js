@@ -3,15 +3,20 @@
 // ------------------------------------
 import { SERVER_BASE } from '../consts'
 const TRANSACTIONS_URL = SERVER_BASE + 'transactions'
+const TRANSACTIONS_BY_CATEGORY_URL = SERVER_BASE + 'categories/:id/transactions'
 
 const TRANSACTIONS_LOAD_FINISH = 'TRANSACTIONS_LOAD_FINISH'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function loadTransactions () {
+export function loadTransactions ({ category }) {
+  let url = TRANSACTIONS_URL
+  if (category) {
+    url = TRANSACTIONS_BY_CATEGORY_URL.replace(':id', category)
+  }
   return (dispatch, getState) => {
-    fetch(TRANSACTIONS_URL).then((response) => {
+    fetch(url).then((response) => {
       response.json().then((data) => {
         dispatch(transactionsLoadFinish(data))
       })
