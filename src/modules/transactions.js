@@ -1,45 +1,44 @@
 // ------------------------------------
 // Constants
 // ------------------------------------
+import { SERVER_BASE } from '../consts'
+const TRANSACTIONS_URL = SERVER_BASE + 'transactions'
 
-import { SERVER_BASE } from '../../../consts'
-const CATEGORIES_URL = SERVER_BASE + 'categories'
-
-const CATEGORY_LOAD_FINISH = 'CATEGORY_LOAD_FINISH'
+const TRANSACTIONS_LOAD_FINISH = 'TRANSACTIONS_LOAD_FINISH'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function loadCategories () {
+export function loadTransactions () {
   return (dispatch, getState) => {
-    fetch(CATEGORIES_URL).then((response) => {
+    fetch(TRANSACTIONS_URL).then((response) => {
       response.json().then((data) => {
-        dispatch(categoryLoadFinish(data))
+        dispatch(transactionsLoadFinish(data))
       })
     })
   }
 }
 
-function categoryLoadFinish (categories) {
-  return { type: CATEGORY_LOAD_FINISH, payload: categories }
+function transactionsLoadFinish (transactions) {
+  return { type: TRANSACTIONS_LOAD_FINISH, payload: transactions }
 }
 
 export const actions = {
-  loadCategories
+  loadTransactions
 }
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [CATEGORY_LOAD_FINISH] : (state, action) => action.payload
+  [TRANSACTIONS_LOAD_FINISH] : (state, action) => action.payload
 }
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const initialState = []
-export default function categoryReducer (state = initialState, action) {
+export default function transactionsReducer (state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type]
 
   return handler ? handler(state, action) : state

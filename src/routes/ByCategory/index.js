@@ -11,9 +11,10 @@ export default (store) => ({
           dependencies for bundling   */
       const ByCategory = require('./containers/ByCategoryContainer').default
       const reducer = require('./modules/category').default
+      const transcationReducer = require('../../modules/transactions').default
 
-      /*  Add the reducer to the store on key 'counter'  */
       injectReducer(store, { key: 'categories', reducer })
+      injectReducer(store, { key: 'transactions', reducer: transcationReducer })
 
       /*  Return getComponent   */
       cb(null, ByCategory)
