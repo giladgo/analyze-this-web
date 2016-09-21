@@ -123,6 +123,7 @@ export default class TxnList extends React.Component {
           yAxes: [
             { type: 'logarithmic',
             ticks: {
+              min: 1,
               callback: (value, index, values) => {
                 if (value.toString().startsWith('1')) {
                   return value
