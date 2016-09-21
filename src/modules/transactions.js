@@ -11,7 +11,7 @@ const TRANSACTIONS_LOAD_FINISH = 'TRANSACTIONS_LOAD_FINISH'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export function loadTransactions ({ category, merchant }) {
+export function loadTransactions ({ category, merchant } = {}) {
   let url = TRANSACTIONS_URL
   if (category) {
     url = TRANSACTIONS_BY_CATEGORY_URL.replace(':id', category)

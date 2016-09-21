@@ -149,18 +149,21 @@ export default class ByCategory extends React.Component {
 
     return (<div>
       <div className='form-group'>
-        <label htmlFor='select-category'>Category</label>
-        <select className='form-control' id='select-category' onChange={this.handleChange}>
-          {this.props.categories.map((category, index) =>
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          )}
-        </select>
-
-        <TxnList transactions={this.props.transactions}
-          chartType={ChartType} chartData={chartData} chartOptions={chartOptions} />
+        {this.props.categories &&
+          <div>
+            <label htmlFor='select-category'>Category</label>
+            <select className='form-control' id='select-category' onChange={this.handleChange}>
+              {this.props.categories.map((category, index) =>
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              )}
+            </select>
+          </div>
+        }
       </div>
+      <TxnList transactions={this.props.transactions}
+        chartType={ChartType} chartData={chartData} chartOptions={chartOptions} />
     </div>)
   }
 }
