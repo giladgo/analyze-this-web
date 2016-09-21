@@ -25,7 +25,8 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => ({
-  merchants : state.merchants
+  merchants : state.merchants,
+  transactions: state.transactions
 })
 
 /*  Note: mapStateToProps is where you should use `reselect` to create selectors, ie:

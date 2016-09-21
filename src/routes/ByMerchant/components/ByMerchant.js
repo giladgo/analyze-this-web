@@ -29,7 +29,7 @@ export default class ByMerchant extends React.Component {
           )}
         </select>
 
-        <TxnList />
+        <TxnList transactions={this.props.transactions} />
       </div>
     </div>)
   }
@@ -38,5 +38,6 @@ export default class ByMerchant extends React.Component {
 ByMerchant.propTypes = {
   merchants: React.PropTypes.array,
   onLoad: React.PropTypes.func,
-  onMerchantChange: React.PropTypes.func
+  onMerchantChange: React.PropTypes.func,
+  transactions: React.propTypes.any
 }

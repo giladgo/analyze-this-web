@@ -1,3 +1,3 @@
-import TxnList from './TxnListContainer'
+import TxnList from './TxnList'
 
 export default TxnList
